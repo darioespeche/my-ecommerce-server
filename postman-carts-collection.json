@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "58661d0d-915f-4269-bab0-ce21747f0246",
+		"name": "E-Commerce API – Carts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44539422",
+		"_collection_link": "https://darioespeche.postman.co/workspace/Dario-Espeche's-Workspace~dee236ef-780c-42d6-83c4-76f4ceb8e1e8/collection/44539422-58661d0d-915f-4269-bab0-ce21747f0246?action=share&source=collection_link&creator=44539422"
+	},
+	"item": [
+		{
+			"name": "CREATE Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Cart by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD Product to Cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/carts/1/product/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"carts",
+						"1",
+						"product",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
