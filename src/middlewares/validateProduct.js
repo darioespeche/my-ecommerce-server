@@ -1,4 +1,3 @@
-// src/middlewares/validateProduct.js
 const Joi = require("joi");
 const schema = Joi.object({
   title: Joi.string().required(),

@@ -1,8 +1,6 @@
-// src/controllers/cartController.js
 const CartManager = require("../managers/CartManager");
 const manager = new CartManager();
 
-// POST /api/carts  → crea carrito
 exports.createCart = async (req, res, next) => {
   try {
     const cart = await manager.createCart();
@@ -12,7 +10,6 @@ exports.createCart = async (req, res, next) => {
   }
 };
 
-// GET /api/carts/:cid  → devuelve carrito con productos
 exports.getCartById = async (req, res, next) => {
   try {
     const cid = parseInt(req.params.cid);
@@ -24,7 +21,6 @@ exports.getCartById = async (req, res, next) => {
   }
 };
 
-// POST /api/carts/:cid/product/:pid  → agrega producto al carrito
 exports.addProductToCart = async (req, res, next) => {
   try {
     const cid = parseInt(req.params.cid);

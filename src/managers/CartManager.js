@@ -1,47 +1,27 @@
-// src/managers/CartManager.js
-const fs = require("fs").promises;
 const path = require("path");
+const { readJson, writeJson } = require("../utils/fs-utils");
 
 class CartManager {
   constructor() {
     this.filePath = path.resolve(__dirname, "../../data/carts.json");
   }
 
-  async _readFile() {
-    try {
-      const content = await fs.readFile(this.filePath, "utf-8");
-      return JSON.parse(content);
-    } catch (err) {
-      if (err.code === "ENOENT") return [];
-      throw err;
-    }
-  }
-
-  async _writeFile(carts) {
-    await fs.writeFile(this.filePath, JSON.stringify(carts, null, 2));
-  }
-
-  // 11.1 Crear un nuevo carrito vacío
   async createCart() {
-    const carts = await this._readFile();
-    const newCart = {
-      id: carts.length + 1,
-      products: [], // Array de { productId, quantity }
-    };
+    const carts = await readJson(this.filePath);
+    const id = carts.length ? carts[carts.length - 1].id + 1 : 1;
+    const newCart = { id, products: [] };
     carts.push(newCart);
-    await this._writeFile(carts);
+    await writeJson(this.filePath, carts);
     return newCart;
   }
 
-  // 11.2 Obtener un carrito por ID
   async getCartById(id) {
-    const carts = await this._readFile();
+    const carts = await readJson(this.filePath);
     return carts.find((c) => c.id === id) || null;
   }
 
-  // 11.3 Agregar un producto a un carrito
   async addProduct(cartId, productId) {
-    const carts = await this._readFile();
+    const carts = await readJson(this.filePath);
     const cart = carts.find((c) => c.id === cartId);
     if (!cart) return null;
 
@@ -52,7 +32,7 @@ class CartManager {
       cart.products.push({ productId, quantity: 1 });
     }
 
-    await this._writeFile(carts);
+    await writeJson(this.filePath, carts);
     return cart;
   }
 }

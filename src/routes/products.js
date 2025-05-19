@@ -1,5 +1,3 @@
-// src/routes/products.js
-
 const { Router } = require("express");
 const ctrl = require("../controllers/productController");
 const validateProduct = require("../middlewares/validateProduct");

@@ -1,19 +1,15 @@
-// src/controllers/productController.js
-
 const ProductManager = require("../managers/ProductManager");
 const manager = new ProductManager();
 
-// 7.1 GET /api/products
 exports.getProducts = async (req, res, next) => {
   try {
     const products = await manager.getAll();
     res.json(products);
   } catch (err) {
-    next(err); // Pasa el error al middleware de manejo de errores
+    next(err);
   }
 };
 
-// 7.2 GET /api/products/:pid
 exports.getProductById = async (req, res, next) => {
   try {
     const id = parseInt(req.params.pid);
@@ -26,11 +22,9 @@ exports.getProductById = async (req, res, next) => {
   }
 };
 
-// 7.3 POST /api/products
 exports.createProduct = async (req, res, next) => {
   try {
     const productData = req.body;
-    // Aquí podrías validar campos obligatorios
     const newProduct = await manager.create(productData);
     res.status(201).json(newProduct);
   } catch (err) {
@@ -38,7 +32,6 @@ exports.createProduct = async (req, res, next) => {
   }
 };
 
-// 7.4 PUT /api/products/:pid
 exports.updateProduct = async (req, res, next) => {
   try {
     const id = parseInt(req.params.pid);
@@ -52,7 +45,6 @@ exports.updateProduct = async (req, res, next) => {
   }
 };
 
-// 7.5 DELETE /api/products/:pid
 exports.deleteProduct = async (req, res, next) => {
   try {
     const id = parseInt(req.params.pid);
