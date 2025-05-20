@@ -1,13 +1,8 @@
-console.log("🔌 Socket.IO client initializing…");
-
 const socket = io();
 
-socket.on("connect", () => {
-  console.log("✅ Conectado con socket id:", socket.id);
-});
+socket.on("connect", () => {});
 
 socket.on("updateProducts", (products) => {
-  console.log("🔄 updateProducts recibido:", products);
   const ul = document.getElementById("productsList");
   ul.innerHTML = "";
   products.forEach((p) => {
@@ -23,7 +18,6 @@ socket.on("updateProducts", (products) => {
 
 document.getElementById("addProductForm").addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log("✉️ Form submit");
   const f = e.target;
   const data = {
     title: f.title.value,
@@ -35,7 +29,6 @@ document.getElementById("addProductForm").addEventListener("submit", (e) => {
     category: f.category.value,
     thumbnails: [],
   };
-  console.log("↗️ Emitting newProduct:", data);
   socket.emit("newProduct", data);
   f.reset();
 });
@@ -43,10 +36,7 @@ document.getElementById("addProductForm").addEventListener("submit", (e) => {
 document.getElementById("productsList").addEventListener("click", (e) => {
   if (!e.target.matches(".deleteBtn")) return;
   const id = parseInt(e.target.closest("li").dataset.id);
-  console.log("🗑️ Emitting deleteProduct:", id);
   socket.emit("deleteProduct", id);
 });
 
-socket.on("error", (msg) => {
-  console.error("❌ Socket error from server:", msg);
-});
+socket.on("error", (msg) => {});

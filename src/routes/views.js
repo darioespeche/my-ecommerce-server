@@ -1,4 +1,3 @@
-// src/routes/views.js
 const { Router } = require("express");
 const ProductManager = require("../managers/ProductManager");
 const manager = new ProductManager();

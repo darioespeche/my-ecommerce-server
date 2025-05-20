@@ -1,15 +1,8 @@
-// public/js/realtimecarts.js
-console.log("🔌 Cart WS client init");
 const socket = io();
 
-// Render inicial
-socket.on("connect", () => {
-  console.log("✅ Cart WS connected", socket.id);
-});
+socket.on("connect", () => {});
 
-// Actualizar lista completa de carritos
 socket.on("updateCarts", (carts) => {
-  console.log("🔄 updateCarts:", carts);
   const ul = document.getElementById("cartsList");
   ul.innerHTML = "";
   carts.forEach((c) => {
@@ -29,13 +22,8 @@ socket.on("updateCarts", (carts) => {
   });
 });
 
-// Actualizar un carrito particular
-socket.on("updateCart:" + socket.id, (cart) => {
-  console.log(`🔄 updateCart:${cart.id}`, cart);
-  // Si quisieras actualizar sólo ese carrito en pantalla…
-});
+socket.on("updateCart:" + socket.id, (cart) => {});
 
-// Refrescar manualmente (opcional)
 document.getElementById("refreshAll").addEventListener("click", () => {
-  socket.emit("requestCarts"); // si implementas un listener en el servidor
+  socket.emit("requestCarts");
 });
