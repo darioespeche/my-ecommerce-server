@@ -20,6 +20,10 @@ class CartManager {
     return carts.find((c) => c.id === id) || null;
   }
 
+  async getAllCarts() {
+    return await readJson(this.filePath);
+  }
+
   async addProduct(cartId, productId) {
     const carts = await readJson(this.filePath);
     const cart = carts.find((c) => c.id === cartId);

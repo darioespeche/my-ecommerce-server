@@ -1,0 +1,100 @@
+/* public/css/styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #f5f5f5;
+}
+
+header {
+  background: #333;
+  color: white;
+  padding: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav a {
+  color: #ddd;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+nav a:hover {
+  color: white;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  background: #fafafa;
+}
+
+form#addProductForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+form#addProductForm input,
+form#addProductForm button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+form#addProductForm button {
+  background: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form#addProductForm button:hover {
+  background: #218838;
+}
+
+ul#productsList,
+ul#cartsList {
+  list-style: none;
+  padding: 0;
+}
+
+ul#productsList li,
+ul#cartsList li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+span.deleteBtn {
+  color: #c0392b;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+span.deleteBtn:hover {
+  text-decoration: underline;
+}
+span.editBtn {
+  color: #2980b9;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+span.editBtn:hover {
+  text-decoration: underline;
+}

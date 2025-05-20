@@ -1,0 +1,19 @@
+<h2>Carritos en Tiempo Real</h2>
+
+<button id="refreshAll">Refrescar Todos Los Carritos</button>
+
+<ul id="cartsList">
+  {{#each carts}}
+    <li data-cid="{{this.id}}">
+      <strong>Carrito #{{this.id}}</strong>
+      <ul>
+        {{#each this.products}}
+          <li>Producto: {{this.productId}} – Cantidad: {{this.quantity}}</li>
+        {{/each}}
+      </ul>
+    </li>
+  {{/each}}
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtimecarts.js"></script>

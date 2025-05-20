@@ -1,9 +1,16 @@
+// src/controllers/cartController.js
 const CartManager = require("../managers/CartManager");
 const manager = new CartManager();
 
 exports.createCart = async (req, res, next) => {
   try {
     const cart = await manager.createCart();
+
+    // Emitir lista completa de carritos
+    const io = req.app.get("io");
+    const allCarts = await manager.getAllCarts(); // implementa este método
+    io.emit("updateCarts", allCarts);
+
     res.status(201).json(cart);
   } catch (err) {
     next(err);
@@ -30,6 +37,11 @@ exports.addProductToCart = async (req, res, next) => {
       return res
         .status(404)
         .json({ error: "Carrito o producto no encontrado" });
+
+    // Emitir el carrito actualizado
+    const io = req.app.get("io");
+    io.emit("updateCart:" + cid, updatedCart);
+
     res.json(updatedCart);
   } catch (err) {
     next(err);
