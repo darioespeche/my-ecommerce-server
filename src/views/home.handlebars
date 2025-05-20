@@ -1,6 +1,11 @@
 <h2>Lista de Productos </h2>
 <ul>
   {{#each products}}
-    <li>{{this.id}} - {{this.title}} - ${{this.price}}</li>
+    <li>{{this.id}}
+      -
+      {{this.title}}
+      - ${{this.price}}
+      -
+      {{this.description}}</li>
   {{/each}}
 </ul>
